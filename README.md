@@ -279,17 +279,6 @@ Manages:
 
 ---
 
-## ✅ Cloudflare Requirements Met
-
-This project fully satisfies all Cloudflare AI application requirements:
-
-1. **LLM**: Llama 3.3 70B via Workers AI with adaptive system prompts  
-2. **Workflow/Coordination**: Cloudflare Workers for API orchestration + Durable Objects for state management  
-3. **User Input**: Chat interface + voice input deployed on Cloudflare Pages  
-4. **Memory/State**: Durable Objects storing conversation history, progress metrics, and learning state  
-
----
-
 ## 🤝 Contributing
 
 This project was created as part of a Cloudflare AI application assignment. Contributions welcome!
@@ -313,7 +302,6 @@ MIT
 ## 🙏 Acknowledgments
 
 - Built on Cloudflare Workers AI (Llama 3.3)  
-- Inspired by adaptive learning research at Lafayette College  
 - Uses Cloudflare's edge computing platform  
 
 ---
