@@ -305,7 +305,7 @@ MIT
 ## 👤 Author
 
 **Saad Amin**  
-- Email: saad05@vt.edu  
+- Email: Saadifsrh2005@gmail.com
 - GitHub: [@Saadcoder28](https://github.com/Saadcoder28)
 
 ---
