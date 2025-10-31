@@ -107,7 +107,7 @@ cf_ai_study-buddy/
 
 ## 🔧 Configuration
 
-### Wrangler Configuration (`worker/wrangler.toml`)
+### Wrangler Configuration
 ```toml
 name = "cf-ai-study-buddy"
 main = "src/index.ts"
@@ -158,25 +158,25 @@ npm run build
 wrangler pages deploy dist --project-name=cf-ai-study-buddy
 ```
 
-Or connect your GitHub repo to Cloudflare Pages for automatic deployments.
-
 ## 🎮 Usage Examples
 
 ### Basic Chat
-```
-User: "What is a linked list?"
-AI: [Provides explanation adapted to user's level]
-User: "Can you show me an example in Python?"
-AI: [Provides code example with context from previous message]
-```
+
+User asks: "What is a linked list?"  
+AI provides explanation adapted to user's level.
+
+User follows up: "Can you show me an example in Python?"  
+AI provides code example with context from previous message.
 
 ### Adaptive Difficulty
+
 The system tracks:
 - Response understanding (detected through follow-up questions)
 - Topic mastery (consistent correct understanding)
 - Adjusts explanation complexity automatically
 
 ### Progress Tracking
+
 Access your learning dashboard to see:
 - Difficulty level
 - Understanding score
@@ -208,11 +208,9 @@ Manages:
 
 ## 📊 API Endpoints
 
-### `POST /api/session/start`
-Creates a new study session
+**POST /api/session/start** - Creates a new study session
 
-### `POST /api/chat`
-Send a message to the AI tutor
+**POST /api/chat** - Send a message to the AI tutor
 ```json
 {
   "sessionId": "session-id",
@@ -220,11 +218,9 @@ Send a message to the AI tutor
 }
 ```
 
-### `GET /api/progress/:sessionId`
-Get learning progress for a session
+**GET /api/progress/:sessionId** - Get learning progress for a session
 
-### `GET /api/health`
-Health check endpoint
+**GET /api/health** - Health check endpoint
 
 ## ✅ Cloudflare Requirements Met
 
@@ -271,6 +267,7 @@ npm run dev
 ```
 
 ### Durable Objects Migration
+
 If you modify the Durable Object class:
 ```bash
 wrangler deploy --new-class StudySession
