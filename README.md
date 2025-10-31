@@ -2,6 +2,26 @@
 
 An AI-powered adaptive learning assistant built on Cloudflare's edge platform. This application uses Llama 3.3 via Workers AI to provide personalized tutoring experiences with conversation memory and adaptive difficulty adjustment.
 
+- **LLM** → Uses **Llama 3.3 (70B)** via **Workers AI** for personalized tutoring and adaptive explanations.  
+- **Workflow / Coordination** → Uses **Workers** and **Durable Objects** for orchestration, adaptive logic, and progress tracking.  
+- **User Input** → Real-time **chat interface** and **voice input** built with **React + Cloudflare Pages**.  
+- **Memory / State** → Persistent **Durable Objects** store conversation history, progress, and understanding level per session.
+
+---
+
+## 🌐 Live Demo
+
+- **Frontend (Cloudflare Pages):** [https://cf-ai-study-buddy.pages.dev](https://cf-ai-study-buddy.pages.dev)  
+- **Backend API (Workers):** [https://cf-ai-study-buddy.saadifsrh2005.workers.dev](https://cf-ai-study-buddy.saadifsrh2005.workers.dev)
+
+---
+
+## 💡 Inspiration
+
+This project is inspired by my experience teaching over **500 students in rural Pakistan using VR headsets** to make STEM and coding more interactive.  
+Through that experience, I learned how adaptive explanations can help students with different learning speeds.  
+**cf_ai_study-buddy** brings that idea online — using Cloudflare’s edge AI infrastructure to deliver personalized learning globally.
+
 ---
 
 ## 🎯 Features
