@@ -1,0 +1,21 @@
+name = "cf-ai-study-buddy"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# Workers AI binding for Llama 3.3
+[ai]
+binding = "AI"
+
+# Durable Objects configuration
+[[durable_objects.bindings]]
+name = "STUDY_SESSION"
+class_name = "StudySession"
+
+# Durable Objects migrations
+[[migrations]]
+tag = "v1"
+new_classes = ["StudySession"]
+
+# Development configuration
+[dev]
+port = 8787
