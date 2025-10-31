@@ -32,7 +32,6 @@ An AI-powered adaptive learning assistant built on Cloudflare's edge platform. T
 - Node.js 18+ and npm
 - Cloudflare account (free tier works)
 - Wrangler CLI installed globally
-
 ```bash
 npm install -g wrangler
 ```
@@ -40,9 +39,8 @@ npm install -g wrangler
 ## 🚀 Quick Start
 
 ### 1. Clone and Install
-
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Saadcoder28/cf_ai_study-buddy.git
 cd cf_ai_study-buddy
 npm install
 ```
@@ -52,11 +50,6 @@ npm install
 Login to Wrangler:
 ```bash
 wrangler login
-```
-
-Create a `.dev.vars` file in the root:
-```bash
-CLOUDFLARE_ACCOUNT_ID=your_account_id
 ```
 
 Get your account ID:
@@ -72,7 +65,7 @@ npm run dev
 ```
 
 This starts:
-- Workers backend on `http://localhost:8787`
+- Worker backend on `http://localhost:8787`
 - React frontend on `http://localhost:5173`
 
 ### 4. Test the Application
@@ -83,7 +76,6 @@ Open `http://localhost:5173` in your browser and try:
 - The AI remembers context and adapts explanations
 
 ## 📁 Project Structure
-
 ```
 cf_ai_study-buddy/
 ├── worker/
@@ -91,11 +83,9 @@ cf_ai_study-buddy/
 │   │   ├── index.ts              # Main Worker entry point
 │   │   ├── durable-objects/
 │   │   │   └── StudySession.ts   # Conversation & progress storage
-│   │   ├── workflows/
-│   │   │   └── learning.ts       # Adaptive learning workflow
 │   │   └── utils/
 │   │       ├── ai.ts             # Workers AI integration
-│   │       └── adaptive.ts       # Difficulty adjustment logic
+│   │       └── helpers.ts        # Utility functions
 │   ├── wrangler.toml             # Worker configuration
 │   └── package.json
 ├── frontend/
@@ -118,7 +108,6 @@ cf_ai_study-buddy/
 ## 🔧 Configuration
 
 ### Wrangler Configuration (`worker/wrangler.toml`)
-
 ```toml
 name = "cf-ai-study-buddy"
 main = "src/index.ts"
@@ -134,13 +123,6 @@ class_name = "StudySession"
 [[migrations]]
 tag = "v1"
 new_classes = ["StudySession"]
-```
-
-### Environment Variables
-
-Create `.dev.vars` for local development:
-```
-CLOUDFLARE_ACCOUNT_ID=your_account_id_here
 ```
 
 ## 🧪 Testing
@@ -164,14 +146,12 @@ curl -X POST http://localhost:8787/api/chat \
 ## 🚢 Deployment
 
 ### Deploy Backend (Workers)
-
 ```bash
 cd worker
 wrangler deploy
 ```
 
 ### Deploy Frontend (Pages)
-
 ```bash
 cd frontend
 npm run build
@@ -197,11 +177,11 @@ The system tracks:
 - Adjusts explanation complexity automatically
 
 ### Progress Tracking
-Access your learning dashboard at `/progress` to see:
-- Topics covered
-- Mastery levels
-- Conversation history
-- Recommended next topics
+Access your learning dashboard to see:
+- Difficulty level
+- Understanding score
+- Message count
+- Motivational feedback
 
 ## 🔑 Key Features Implementation
 
@@ -212,15 +192,14 @@ Uses Llama 3.3 70B model with custom system prompts for educational content.
 Each study session persists:
 - Full conversation history
 - Student performance metrics
-- Topic mastery levels
-- Learning preferences
+- Understanding score
+- Difficulty level
 
-### 3. Workflows (Coordination)
+### 3. Adaptive Algorithm
 Manages:
 - Multi-turn conversation flow
 - Difficulty adjustment triggers
 - Progress updates
-- Topic recommendations
 
 ### 4. Real-time Chat
 - Streaming responses for better UX
@@ -231,11 +210,6 @@ Manages:
 
 ### `POST /api/session/start`
 Creates a new study session
-```json
-{
-  "userId": "optional-user-id"
-}
-```
 
 ### `POST /api/chat`
 Send a message to the AI tutor
@@ -249,8 +223,17 @@ Send a message to the AI tutor
 ### `GET /api/progress/:sessionId`
 Get learning progress for a session
 
-### `POST /api/voice`
-Process voice input (speech-to-text)
+### `GET /api/health`
+Health check endpoint
+
+## ✅ Cloudflare Requirements Met
+
+This project fully satisfies all Cloudflare AI application requirements:
+
+1. **LLM**: Llama 3.3 70B via Workers AI with adaptive system prompts
+2. **Workflow/Coordination**: Cloudflare Workers for API orchestration + Durable Objects for state management
+3. **User Input**: Chat interface + voice input deployed on Cloudflare Pages
+4. **Memory/State**: Durable Objects storing conversation history, progress metrics, and learning state
 
 ## 🤝 Contributing
 
@@ -265,7 +248,6 @@ MIT
 **Saad Amin**
 - Email: saad05@vt.edu
 - GitHub: [@Saadcoder28](https://github.com/Saadcoder28)
-- Portfolio: [Link](your-portfolio-url)
 
 ## 🙏 Acknowledgments
 
