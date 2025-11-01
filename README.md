@@ -34,6 +34,16 @@ Through that experience, I learned how adaptive explanations can help students w
 
 ---
 
+## 🧠 Adaptive Feedback System
+The **AI Study Buddy** dynamically adjusts learning difficulty and tracks user understanding through an internal scoring model stored in Durable Objects.
+
+### How Understanding Score Works
+- Each user message is analyzed for **positive and negative indicators** (keywords and sentiment cues).  
+- The system updates a **score from 0 to 100**, clamped within safe bounds.  
+- Based on this score, the AI automatically promotes or demotes difficulty.
+
+---
+
 ## 🏗️ Architecture
 
 ### Components
