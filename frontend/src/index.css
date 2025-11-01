@@ -27,13 +27,13 @@
   }
 }
 
-/* Custom scrollbar for chat */
+/* Custom scrollbar for chat area - visible and styled */
 .overflow-y-auto::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .overflow-y-auto::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f1f5f9;
   border-radius: 10px;
 }
 
@@ -43,5 +43,21 @@
 }
 
 .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
+  background: #94a3b8;
+}
+
+/* Firefox scrollbar styling for chat */
+.overflow-y-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f1f5f9;
+}
+
+/* Hide scrollbar for textarea input only */
+.input-scroll {
+  -ms-overflow-style: none;      /* IE/Edge */
+  scrollbar-width: none;         /* Firefox */
+}
+.input-scroll::-webkit-scrollbar { /* Chrome/Safari */
+  width: 0;
+  height: 0;
 }

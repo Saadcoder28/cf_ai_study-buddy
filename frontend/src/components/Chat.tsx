@@ -9,48 +9,38 @@ interface Message {
 interface ChatProps {
   messages: Message[];
   loading: boolean;
+  scrollTrigger: number;
 }
 
-export default function Chat({ messages, loading }: ChatProps) {
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+export default function Chat({ messages, loading, scrollTrigger }: ChatProps) {
+  const endRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when new messages arrive
+  // Only scroll when user sends a message (scrollTrigger changes)
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+    if (scrollTrigger > 0 && endRef.current) {
+      endRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [scrollTrigger]);
 
-  const formatTime = (timestamp: number) => {
-    return new Date(timestamp).toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-    });
-  };
+  const formatTime = (t: number) =>
+    new Date(t).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
 
   return (
-    <div className="h-[600px] overflow-y-auto p-6 space-y-4">
-      {messages.map((message, index) => (
+    <div ref={containerRef} className="h-[600px] overflow-y-auto p-6 space-y-4">
+      {messages.map((m, i) => (
         <div
-          key={index}
-          className={`flex ${
-            message.role === 'user' ? 'justify-end' : 'justify-start'
-          } animate-fadeIn`}
+          key={i}
+          className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'} animate-fadeIn`}
         >
           <div
             className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-              message.role === 'user'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-800'
+              m.role === 'user' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-800'
             }`}
           >
-            <div className="whitespace-pre-wrap break-words">
-              {message.content}
-            </div>
-            <div
-              className={`text-xs mt-1 ${
-                message.role === 'user' ? 'text-blue-100' : 'text-gray-500'
-              }`}
-            >
-              {formatTime(message.timestamp)}
+            <div className="whitespace-pre-wrap break-words">{m.content}</div>
+            <div className={`text-xs mt-1 ${m.role === 'user' ? 'text-blue-100' : 'text-gray-500'}`}>
+              {formatTime(m.timestamp)}
             </div>
           </div>
         </div>
@@ -68,7 +58,7 @@ export default function Chat({ messages, loading }: ChatProps) {
         </div>
       )}
 
-      <div ref={messagesEndRef} />
+      <div ref={endRef} />
     </div>
   );
 }
