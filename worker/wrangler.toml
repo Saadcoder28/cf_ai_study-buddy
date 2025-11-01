@@ -14,7 +14,7 @@ class_name = "StudySession"
 # Durable Objects migrations
 [[migrations]]
 tag = "v1"
-new_classes = ["StudySession"]
+new_sqlite_classes = ["StudySession"]
 
 # Development configuration
 [dev]
