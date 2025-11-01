@@ -11,7 +11,7 @@ An AI-powered adaptive learning assistant built on Cloudflare's edge platform. T
 
 ## 🌐 Live Demo
 
-- **Demo Link to try and test (Cloudflare Pages):** [https://cf-ai-study-buddy.pages.dev](https://cf-ai-study-buddy.pages.dev)  
+- **Demo Link to try and test (Cloudflare Pages):** [https://ef36c6e6.cf-ai-study-buddy.pages.dev](https://ef36c6e6.cf-ai-study-buddy.pages.dev)
 
 ---
 
